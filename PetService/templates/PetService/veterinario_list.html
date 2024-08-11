@@ -1,0 +1,29 @@
+{% extends 'PetService/base.html' %}
+{% load static %}
+
+{% block titulo %} PetService | Veterinarios {% endblock titulo %}
+
+{% block cambios %}
+
+<h1 style="margin-left: 30px; font-family: cambria; background-color: rgb(174, 243, 220);">Lista de Veterinarios</h1>
+
+{% if veterinario %}
+    <ul>
+        {% for veterinarios in veterinario %}
+        <li style="color: darkgreen; margin-left: 20px; background-color: rgb(222, 241, 176);"> Nombre: {{ veterinarios.nombre }} {{ veterinarios.apellido }}
+            <p>
+                <a href="{% url 'veterinario_update' veterinarios.pk %}">Editar</a> <br>
+                <a href="{% url 'veterinario_detail' veterinarios.pk %}">Ver</a> <br>            
+                <a href="{% url 'veterinario_delete' veterinarios.pk %}">Eliminar</a> <br>            
+            </p>
+        </li> 
+        {% endfor %}
+    </ul>
+{% else %}
+    <p style="margin-left: 30px;">No hay veterinarios registrador aún.</p>
+{% endif %}
+
+<a href="{% url 'veterinario_create' 0 %}" style="font-size: 15px; color: green; margin-left: 30px;">Crear Nuevo Veterinario</a> <br>
+<a href="{% url 'inicio' %}" style="font-size: 15px; color: green; margin-left: 30px;">INICIO</a> <br>            
+
+{% endblock %}

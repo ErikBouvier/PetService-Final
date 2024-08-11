@@ -1,0 +1,20 @@
+{% extends 'PetService/base.html' %}
+{% load static %}
+
+{% block titulo %} Inicio de sesion {% endblock titulo %}
+
+{% block cambios %}
+
+<div class="d-flex justify-content-center" style="background-color: aquamarine;">
+    <div class="d-flex flex column">
+        <p class="fs-5 fw-bold"> {{ msg_login }}</p>
+            <form action="" method="POST">
+            {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="Iniciar sesion" style="border-radius: 50px; margin: 5px;"> 
+        </form>
+    </div>
+</div>
+{% endblock cambios %}
+
+

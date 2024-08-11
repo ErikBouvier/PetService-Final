@@ -1,0 +1,28 @@
+{% extends 'PetService/base.html' %}
+{% load static %}
+{% block titulo %} PetService | Mascotas {% endblock titulo %}
+
+{% block cambios %}
+
+<h1 style="margin-left: 30px; font-family: cambria; background-color: rgb(174, 243, 220);">Lista de mascotas</h1>
+{% if mascota %}
+    <ul>
+    {% for mascotas in mascota %}
+        <li style="color: darkgreen; margin-left: 20px; background-color: rgb(222, 241, 176);"> Nombre: {{mascotas.nombre_mascota}} 
+            <p>
+                <a href="{% url 'mascota_list' %}"></a> 
+                <a href="{% url 'mascota_update' mascotas.pk %}"> Editar </a> <br>
+                <a href="{% url 'mascota_detail' mascotas.pk %}"> Ver </a> <br>            
+                <a href="{% url 'mascota_delete' mascotas.pk %}"> Eliminar </a> <br>            
+            </p>
+        </li> 
+    {% endfor %}
+    </ul>
+{% else %}
+    <p style="margin-left: 30px;">No hay mascotas registradas aún.</p>
+{% endif %}
+<p>
+    <a href="{% url 'mascota_create' 0 %}" style="font-size: 15px; color: green; margin-left: 30px;"> Crear Nueva Mascota </a> <br>
+    <a href="{% url 'inicio' %}" style="font-size: 15px; color: green; margin-left: 30px;"> INICIO </a>
+</p>
+{% endblock %}

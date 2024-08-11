@@ -1,0 +1,16 @@
+{% extends 'PetService/base.html' %}
+{% load static %}
+
+{% block titulo %} Veterinarios {% endblock titulo %}
+{% block cambios %}
+    <h1 style="margin-left: 30px; font-family: cambria; background-color: rgb(222, 241, 176);"> Datos del veterinario</h1>
+    <p style="margin-left: 30px; background-color: rgb(154, 241, 143);">Nombre: <i>{{veterinario.nombre}}</i></p>
+    <p style="margin-left: 30px; background-color: rgb(149, 245, 245);">Apellido: <i>{{veterinario.apellido}}</i></p>
+    <p style="margin-left: 30px; background-color: rgb(154, 241, 143);">Cargo: <i>{{veterinario.cargo}}</i></p>
+    
+
+    <p>
+        <a href="{% url 'veterinario_list' %}" style="color: black; background-color: rgb(222, 241, 176); box-shadow: 3px 3px 3px; font-size: 20px; margin: 30px;"> Regresar</a>
+    </p>
+
+{% endblock %}

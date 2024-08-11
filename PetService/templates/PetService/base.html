@@ -1,0 +1,154 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>{% block titulo %} {% endblock %}</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{% static 'petservice/assets/favicon.ico'%}"/>
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'petservice/css/styles.css' %}" rel="stylesheet"/>
+    <link href="{% static 'petservice/css/imagen1.css' %}" rel="stylesheet"/>
+</head>
+
+    
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5" >
+            <a class="navbar-brand" href="{% url 'inicio' %}" 
+            style="color: greenyellow; font-size: 40px; text-shadow: 3px 3px 6px red; font-family: monospace;">PetServices</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'servicios' %}" style="color: greenyellow;">Servicios</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="{% url 'mascota_list' %}" style="color: greenyellow;">Mascotas</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="{% url 'propietario_list' %}" style="color: greenyellow;">Propietarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'veterinario_list' %}" style="color: greenyellow;">Veterinarios</a></li>
+                </ul>
+
+                {% if request.user.is_authenticated %}
+                            <img src="{{ request.user.avatar.imagen.url }}" alt="" style="height: 40px;width: 40px;">
+                            <div class="dropdown">
+                                <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" 
+                                style="border-radius: 25px red; color: red;">
+                                    {{ request.user.username }}
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="{% url 'edit_user' %}">Editar usuario</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'change_password' %}">Cambiar contraseña</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li>
+                                </ul>
+                            </div>
+
+                        {% else %}
+
+                            <div class="dropdown">
+                                <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" 
+                                style="border-radius: 25px; color: red;">
+                                    Ingresar
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="{% url 'login' %}">Inciar Sesión</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'register' %}">Crear cuenta</a></li>
+                                </ul>
+                            </div>
+                        {% endif %}
+            </div>  
+        </nav>
+    
+    {% block cambios %}
+    <header class="bg-dark py-3">
+        <div class="container px-3">
+            <div class="row gx-5 justify-content-center position-relative">
+                <img src="{% static 'petservice/assets/imagen1.jpg' %}" alt="Imagen fondo" class="img-fluid">
+                <div class="col-lg-9 position-absolute top-50 start-50 translate-middle text-center my-5 text-overlay">
+                    <div class="text-center my-5">
+                        <h1 class="display-5 fw-bolder mb-2" style="color: rgb(13, 209, 176); font-family: fantasy; text-shadow: 5px 5px 8px black; position: relative; padding: 30px;"
+                        >Lleva los cuidados de tu mascota a otro nivel, y de la forma más sencilla!</h1>
+                        <p class="lead text-white mb-2" style="font-family: Cambria; padding: 25px;"
+                        >Porque lo más importante para nosotros, <br> es lo más importante para vos!!!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Testimonials section-->
+    <section class="py-1 border-bottom" style="background-color: lightcoral;">
+        <div class="container px-1 my-1 px-1">
+            <div class="text-center mb-5">
+                <h2 class="fw-bolder" style="text-shadow: 2px 2px 6px whitesmoke; font-family: monospace;">Testimonio de nuestros usuarios</h2>
+                <p class="lead mb-0">Porque nos eligen:</p>
+            </div>
+            <div class="row gx-1 justify-content-center">
+                <div class="col-lg-6">
+                    <!-- Testimonial 1-->
+                    <div class="card mb-4">
+                        <div class="card-body p-4">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <i class="bi bi-chat-right-quote-fill text-primary fs-1"></i>
+                                </div>
+                                <div class="ms-4">
+                                    <img src="{% static 'petservice/assets/imagen3.jpg' %}" alt="Imagen fondo" class="img-fluid" style="max-width: 100px;">
+                                    <p class="mb-1">Gracias por ofrecer un producto tan bueno. Nos encantó
+                                        trabajar con ustedes y con todo el equipo, ¡y te recomendaremos a otros!
+                                    </p>
+                                    <div class="small text-muted">- Juan Diaz, Buenos Aires</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2-->
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <i class="bi bi-chat-right-quote-fill text-primary fs-1"></i>
+                                </div>
+                                <div class="ms-4">
+                                    <img src="{% static 'petservice/assets/imagen4.jpg' %}" alt="Imagen fondo" class="img-fluid" style="max-width: 100px;">
+                                    <p class="mb-1">Todo el equipo fue de gran ayuda para tratar a nuestra
+                                        mascota. Los volveremos a contratar en un futuro próximo!</p>
+                                    <div class="small text-muted">- Alberta Gimenez, Montevideo</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-0">
+                <p class="m-0 text-center text-white">Copyright &copy; Pablo Bouvier &reg; 2024 </p> 
+                <p>
+                <a href="{% url 'about' %}" class="btn btn-secondary" style="border-radius: 25px; background-color: greenyellow; color: black;"> About</a>
+                <a href="{% url 'contact' %}" class="btn btn-secondary" style="border-radius: 25px; background-color: greenyellow; color: black;"> Contact</a>
+                </p>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>    
+</body>
+
+</html>

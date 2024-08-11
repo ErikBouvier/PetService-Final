@@ -1,0 +1,19 @@
+{% extends 'PetService/base.html' %}
+{% load static %}
+
+{% block titulo %} Mascotas {% endblock titulo %}
+
+{% block cambios %}
+<h1 style="font-family: cambria; background-color: aquamarine">Crear mascota</h1>
+    <form action="" method="POST" style="font-family: geneva; font-size: large; background-color: rgb(194, 241, 167);">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Crear" style=" box-shadow: 5px 5px 5px; color: rgb(126, 52, 9); border-color: black; margin: 5px;">
+    </form>
+<p>
+    <a href="{% url 'mascota_list' %}" style="color: black; background-color: rgb(222, 241, 176); box-shadow: 3px 3px 3px; font-size: 20px; margin: 30px;"> Regresar </a>
+</p>
+
+
+{% endblock %}
+    

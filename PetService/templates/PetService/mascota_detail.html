@@ -1,0 +1,21 @@
+{% extends 'PetService/base.html' %}
+{% load static %}
+{% block titulo %} Mascotas {% endblock titulo %}
+
+
+
+{% block cambios %}
+    <h1> Datos de la mascota</h1>
+    <p style="margin-left: 30px; background-color: rgb(154, 241, 143);">Nombre: <i>{{mascota.nombre_mascota}}</i></p>
+    <p style="margin-left: 30px; background-color: rgb(149, 245, 245);">Fecha de nacimiento: <i>{{mascota.fecha_nacimiento}}</i></p>
+    <p style="margin-left: 30px; background-color: rgb(154, 241, 143);">Edad: <i>{{mascota.edad}}</i></p>
+    <p style="margin-left: 30px; background-color: rgb(149, 245, 245);">Sexo: <i>{{mascota.sexo}}</i></p>
+    <p style="margin-left: 30px; background-color: rgb(154, 241, 143);">Especie: <i>{{mascota.especie}}</i></p>
+    <p style="margin-left: 30px; background-color: rgb(149, 245, 245);">Profesional a cargo: <i>{{mascota.profesional_a_cargo}}</i></p>
+    <p style="margin-left: 30px; background-color: rgb(154, 241, 143);">Propietario: <i>{{mascota.propietario}}</i></p>
+
+    <p>
+        <a href="{% url 'mascota_list' %}" style="color: black; background-color: rgb(222, 241, 176); box-shadow: 3px 3px 3px; font-size: 20px; margin: 30px;"> Regresar</a>
+    </p>
+
+{% endblock %}

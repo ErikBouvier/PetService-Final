@@ -1,0 +1,27 @@
+{% extends 'PetService/base.html' %}
+{% load static %}
+{% block titulo %} PetService | Propietario {% endblock titulo %}
+
+{% block cambios %}
+
+<h1 style="margin-left: 30px; font-family: cambria; background-color: rgb(174, 243, 220);"> Lista de propietarios </h1>
+{% if propietario %}
+    <ul>
+    {% for propietarios in propietario %}
+        <li style="color: darkgreen; margin-left: 20px; background-color: rgb(222, 241, 176);"> Nombre: {{propietarios.nombre}} {{propietarios.apellido}}
+            <p>
+                <a href="{% url 'propietario_update' propietarios.pk %}"> Editar </a> <br>
+                <a href="{% url 'propietario_detail' propietarios.pk %}"> Ver </a> <br>            
+                <a href="{% url 'propietario_delete' propietarios.pk %}"> Eliminar </a> <br>            
+            </p>
+        </li> 
+    {% endfor %}
+    </ul>
+{% else %}
+    <p style="margin-left: 30px;">No hay propietarios registrados aún.</p>
+{% endif %}
+<p>
+    <a href="{% url 'propietario_create' 0 %}" style="font-size: 15px; color: green; margin: 30px;"> Crear Nuevo Propietario</a> <br>
+    <a href="{% url 'inicio' %}" style="font-size: 15px; color: green; margin: 30px;"> INICIO </a>
+</p>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'PetService/base.html' %}
+{% load static %}
+{% block titulo %} Mascotas {% endblock titulo %}
+
+{% block cambios %}
+<h1 style="color: red; text-decoration: underline black; margin-left: 50px;">Eliminar mascota</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    ¿Estás seguro que quieres eliminar a la mascota: {{mascota.nombre_mascota}} ?
+    <input type="submit" value="Eliminar" style="color: red; box-shadow: 5px 5px 1px red; margin: 25px;">
+</form>
+<p>
+    <a href="{% url 'mascota_list' %}" style="font-size: 20px; color: rgb(0, 9, 128); margin: 30px;"> REGRESAR </a>
+</p>
+{% endblock cambios %}
