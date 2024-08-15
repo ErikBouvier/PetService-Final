@@ -1,17 +1,18 @@
 {% extends 'PetService/base.html' %}
+
 {% load static %}
 
 {% block titulo %} PetService | Registro de usuario {% endblock %}
 
 {% block cambios %}
 
-<p class="fs-5 fw-bold" style="background-color: aquamarine;"> {{ msg_register }}</p>
+
     <div class="d-flex justify-content-center" style="background-color: aquamarine;">
         <div class="d-flex flex column">
-                <form action="" method="POST">
-                    {% csrf_token %}
-                        {{form.as_p}}
-                <input type="submit" value="Registrate!" style="border-radius: 50px; margin: 5px;" > 
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="Registrate!" style="border-radius: 50px; margin: 5px;" >  
             </form>
         </div>
     </div>

@@ -34,17 +34,15 @@ def login_request(request):
 
 
 def register(request):
-    msg_register = ''
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'PetService/inicio.html')
+            return render(request, 'PetService/inicio.html', {'mensaje': 'Usuario creado con exito!'})
     else:
-        msg_register = 'Datos incorrectos. Intentelo nuevamente'
+        form = UserRegisterForm()
 
-    form = UserRegisterForm()
-    return render(request, 'usuarios/register.html', {'form': form, 'msg_register': msg_register})
+    return render(request, 'usuarios/register.html', {'form': form})
 
 
 @login_required
@@ -55,7 +53,8 @@ def edit_user(request):
             request.POST, request.FILES, instance=usuario)
         if mi_formulario.is_valid():
             if mi_formulario.cleaned_data.get('imagen'):
-                usuario.avatar.imagen = mi_formulario.cleaned_data.get('imagen')
+                usuario.avatar.imagen = mi_formulario.cleaned_data.get(
+                    'imagen')
                 usuario.avatar.save()
             mi_formulario.save()
             return render(request, 'PetService/inicio.html')
