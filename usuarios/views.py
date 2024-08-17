@@ -60,7 +60,7 @@ def edit_user(request):
             return render(request, 'PetService/inicio.html')
 
     else:
-        mi_formulario = UserEditForm(instance=request.user)
+        mi_formulario = UserEditForm(instance=usuario)
 
     return render(request, 'usuarios/edit_user.html', {'form': mi_formulario})
 
